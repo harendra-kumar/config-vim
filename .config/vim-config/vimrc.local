@@ -1,0 +1,122 @@
+" General {{{
+" default is \
+"let maplocalleader = '\'
+
+" vim quick help file
+nmap ,vh :vnew ~/.config/vim-config/vim.help<CR>
+
+set textwidth=79
+"set tabstop=4
+"set shiftwidth=4
+
+" makes it easy to preview a tag in tagbar
+set cursorline
+
+hi ColorColumn ctermbg=8
+setlocal colorcolumn=80
+
+set splitright
+let NERDTreeQuitOnOpen = 0
+
+"vimdiff unfold everything in both windows
+nmap \zz zR:wincmd W<CR>zR:wincmd W<CR>
+
+let g:indent_guides_enable_on_vim_startup = 1
+"let indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=236
+" }}}
+
+" Conque Term {{{
+" ctrl-w in insert mode
+let g:ConqueTerm_CWInsert=1
+"let g:ConqueTerm_InsertOnEnter=1
+let g:ConqueTerm_Color=2
+let g:ConqueTerm_StartMessages=0
+let g:ConqueTerm_ReadUnfocused=1
+
+" }}}
+
+" Snippets {{{
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-y>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+" If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
+
+" emmet plugin currentl disabled
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,css EmmetInstall
+
+" }}}
+
+" Tags {{{
+" Open tagbar automatically
+" autocmd VimEnter * nested :call tagbar#autoopen(1)
+let g:tagbar_left = 1
+
+" }}}
+
+" Web development {{{
+
+" Javascript completion
+" make it portable - need to have the path in vimpath
+let g:tern#command=['/opt/local/bin/tern']
+let g:tern_map_keys=1
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+" Formatting
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+" }}}
+
+" Haskell {{{
+"For hasktags (module tags) - recognise ., ' etc as part of keywords
+" But it might be problematic for composition cases like putStrLn.pprint
+" '#' for GHC boxed types or magichash
+" XXX numbers are seen in ghc code e.g. Typeable1. currently not considered
+" part of a keyword
+" TODO This should be handled in a language/context aware manner. depending on the
+" context you will or will not consider the '.' as part of the identifier or
+" not.
+autocmd FileType haskell set iskeyword=a-z,A-Z,_,.,39,<,>,*,$,#
+autocmd FileType haskell set formatoptions+=tcro
+autocmd FileType haskell set formatoptions-=l
+autocmd FileType haskell set ts=4
+autocmd FileType haskell set sw=4
+autocmd FileType haskell setlocal colorcolumn=80
+
+" TODO - ghci on the current file
+" TODO - ghci with only the imports of current file's
+nnoremap ,gh :ConqueTermVSplit stack exec ghci<CR>
+nnoremap ,ghl :call conque_term#get_instance().writeln(':load '.expand('%'))<CR>
+
+"For neco-ghc to work with YCM
+" This makes vim hang for a while when a . is inserted. Disabling for now.
+"let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
+" }}}
+
+" Python {{{
+"let g:pymode_rope_completion = 0
+" }}}
+
+" Markdown {{{
+"markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+" }}}
+
+" Customizations {{{
+if filereadable(expand("~/.config/vim-config/vimrc.local.Linux"))
+  source ~/.config/vim-config/vimrc.local.Linux
+endif
+ " }}}
