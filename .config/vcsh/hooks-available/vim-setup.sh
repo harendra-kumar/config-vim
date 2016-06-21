@@ -5,6 +5,10 @@ POWERLINE_FONT_REPO=https://github.com/powerline/fonts.git
 HVN_DIR=~/.config/haskell-vim-now
 HCONFIG=~/.config/vim-config
 
+# stack setup uses git which will not work correctly because of GIT_DIR being
+# set and exported by vcsh.
+unset GIT_DIR
+
 while test -n "$1"
 do
   case $1 in
