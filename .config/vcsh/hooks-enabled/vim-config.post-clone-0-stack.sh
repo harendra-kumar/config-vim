@@ -1,1 +1,0 @@
-../hooks-available/stack-setup.sh

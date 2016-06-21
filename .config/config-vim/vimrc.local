@@ -114,9 +114,3 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
 " }}}
-
-" Customizations {{{
-if filereadable(expand("~/.config/vim-config/vimrc.local.Linux"))
-  source ~/.config/vim-config/vimrc.local.Linux
-endif
- " }}}

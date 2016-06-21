@@ -18,5 +18,9 @@ vcsh clone https://github.com/harendra-kumar/config-vim.git
 ### Pre-requisites
 Make sure that you have Haskell `stack` installed.
 
+### Customizations
+
+Customized via: `~/.config/config-vim/vimrc.local`
+
 ## Suggestions
 Any fixes, suggestions on better configuration options are welcome!
