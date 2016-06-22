@@ -3,7 +3,7 @@
 POWERLINE_FONT_REPO=https://github.com/powerline/fonts.git
 
 HVN_DIR=~/.config/haskell-vim-now
-HCONFIG=~/.config/vim-config
+HCONFIG=~/.config/config-vim
 
 # stack setup uses git which will not work correctly because of GIT_DIR being
 # set and exported by vcsh.
