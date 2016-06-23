@@ -54,7 +54,7 @@ UNDO     ,u(ndo)
 SEARCH   *(forward) | # (backward)
 WINMOV   <c-h> | <c-j> | <c-k> | <c-l>
 SPLITS   ,sh | ,sj | ,sk | ,sl
-SPELL    ,ss
+SPELL    ,ss, ]s, [s, z=
 NERDTREE ,f | ,F
 ALIGN    ,a= | ,a, | ,a| | ,ap(rompt)
 TAGBAR   ,tt
