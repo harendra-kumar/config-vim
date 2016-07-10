@@ -3,7 +3,7 @@
 "let maplocalleader = '\'
 
 " vim quick help file
-nmap ,vh :vnew ~/.config/config-vim/vim.help<CR>
+nmap ,vh :vnew ~/.config/config-vim/vim.md<CR>
 
 set textwidth=79
 "set tabstop=4
