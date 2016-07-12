@@ -99,20 +99,17 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " }}}
 " Haskell {{{
-"For hasktags (module tags) - recognise ., ' etc as part of keywords
-" But it might be problematic for composition cases like putStrLn.pprint
-" '#' for GHC boxed types or magichash
-" XXX numbers are seen in ghc code e.g. Typeable1. currently not considered
-" part of a keyword
-" TODO This should be handled in a language/context aware manner. depending on the
-" context you will or will not consider the '.' as part of the identifier or
-" not.
+" For hasktags use . as part of the keyword
+" Modules have . as part of the keyword e.g. Data.List
+" But qualified imports will not work e.g. Map.elem will not search elem
 autocmd FileType haskell set iskeyword=a-z,A-Z,_,.,39,<,>,*,$,#
 autocmd FileType haskell set formatoptions+=tcro
 autocmd FileType haskell set formatoptions-=l
 autocmd FileType haskell set ts=4
 autocmd FileType haskell set sw=4
-autocmd FileType haskell setlocal colorcolumn=80
+
+" Disable concealplus
+autocmd FileType haskell set conceallevel=0
 
 " TODO - ghci on the current file
 " TODO - ghci with only the imports of current file's
