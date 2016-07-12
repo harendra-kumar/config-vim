@@ -13,6 +13,27 @@ Variables         | `:set`
 Maps              | `:map | :help map-commands | :help map-listing`
 Context help (K)  | `:setlocal keywordprg=:help`
 
+## Motion
+
+| Function        | Commands             |
+|-----------------|----------------------|
+Word              | `b w B W ge e gE E`
+Line              | `0 ^ gm $ - +`
+Sentence          | `( )`
+Paragraph         | `{ }`
+Section           | `[[ ]] [] ][`
+Screen            | `g0 g^ M g$ gk gj`
+Indent-wise       | `xy where x=[|] y=-|+|=`
+Indent-scope      | `[% | ]%`
+
+## Scrolling
+| Function        | Commands             |
+|-----------------|----------------------|
+Line              | ^E ^Y
+Half Page         | ^D ^U
+Page              | ^F ^B
+Current line      | zt zz zb
+
 ## Windows
 
 | Function        | Commands             |
@@ -44,6 +65,9 @@ CLIPBOARD         | `:1,10y + | :1,10y * | "+y | "*y | "+p | "*p`
 FORMATTTING       | `:help formatting | :retab`
 RECORDING         | `: q<letter><keystrokes>q | @<letter> | @@`
 CONQUE            | `: <F9>`
+Folds             | `za zc zo zm zr zn`
+Unfold vimdiff*   | `\zR`
+Fold Movements    | `[z ]z zj zk`
 
 ## Haskell Vim Now
 
@@ -63,3 +87,10 @@ TAGBAR            | `,tt`
 CSCOPE            | `<C-\>`
 GIT               | `,gs(tatus) | ,gg(rep) | ,gl | ,gd(iff) | ,g? | ,gb(lame)`
 GHCI              | `,gh | ,ghl`
+
+## Color schemes
+:colorscheme <tab>
+
+* wombat256mod
+* solarized
+

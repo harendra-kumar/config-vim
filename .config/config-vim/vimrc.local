@@ -2,32 +2,57 @@
 " default is \
 "let maplocalleader = '\'
 
-" vim quick help file
+" vim personalized quick reference file
 nmap ,vh :vnew ~/.config/config-vim/vim.md<CR>
 
 set textwidth=79
 "set tabstop=4
 "set shiftwidth=4
-
-" makes it easy to preview a tag in tagbar
-set cursorline
-
-hi ColorColumn ctermbg=8
-setlocal colorcolumn=80
-
+"
 set splitright
 let NERDTreeQuitOnOpen = 0
 
 "vimdiff unfold everything in both windows
-nmap \zz zR:wincmd W<CR>zR:wincmd W<CR>
+nmap \zR zR:wincmd W<CR>zR:wincmd W<CR>
+" }}}
+" Appearance {{{
+" Set color column before the color scheme for the scheme color to take effect.
+hi ColorColumn ctermbg=8
+setlocal colorcolumn=80
 
+" makes it easy to preview a tag in tagbar
+set cursorline
+
+colorscheme solarized
+set background=light
+call togglebg#map("<F2>")
+
+" Indent Guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
 "let indent_guides_guide_size = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=236
-" }}}
+"let g:indent_guides_auto_colors = 0
 
+" See color values at https://github.com/altercation/vim-colors-solarized
+" Override the indent guide highlight function
+" to use colorscheme specific indentguide colors
+function! indent_guides#basic_highlight_colors()
+  try
+      let l:colorscheme=g:colors_name
+  catch /^Vim:E121/
+      let l:colorscheme='default'
+  endtry
+  let l:cterm_colors = (&g:background == 'dark')
+                        \ ? ((l:colorscheme == 'solarized')
+                            \ ? ['black', 8]
+                            \ : ((l:colorscheme == 'wombat256mod') ? [236, 235] : ['darkgrey', 'black']))
+                        \ : ((l:colorscheme == 'wombat256mod') ? [236, 235] : ['lightgrey', 'white'])
+  let l:gui_colors   = (&g:background == 'dark') ? ['grey15', 'grey30']  : ['grey70', 'grey85']
+
+  exe 'hi IndentGuidesEven guibg=' . l:gui_colors[0] . ' guifg=' . l:gui_colors[1] . ' ctermbg=' . l:cterm_colors[0] . ' ctermfg=' . l:cterm_colors[1]
+  exe 'hi IndentGuidesOdd  guibg=' . l:gui_colors[1] . ' guifg=' . l:gui_colors[0] . ' ctermbg=' . l:cterm_colors[1] . ' ctermfg=' . l:cterm_colors[0]
+endfunction
+" }}}
+" }}}
 " Conque Term {{{
 " ctrl-w in insert mode
 let g:ConqueTerm_CWInsert=1
@@ -37,7 +62,6 @@ let g:ConqueTerm_StartMessages=0
 let g:ConqueTerm_ReadUnfocused=1
 
 " }}}
-
 " Snippets {{{
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
@@ -54,14 +78,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "autocmd FileType html,css EmmetInstall
 
 " }}}
-
 " Tags {{{
 " Open tagbar automatically
 " autocmd VimEnter * nested :call tagbar#autoopen(1)
 let g:tagbar_left = 1
 
 " }}}
-
 " Web development {{{
 
 " Javascript completion
@@ -76,7 +98,6 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " }}}
-
 " Haskell {{{
 "For hasktags (module tags) - recognise ., ' etc as part of keywords
 " But it might be problematic for composition cases like putStrLn.pprint
@@ -103,11 +124,9 @@ nnoremap ,ghl :call conque_term#get_instance().writeln(':load '.expand('%'))<CR>
 "let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " }}}
-
 " Python {{{
 "let g:pymode_rope_completion = 0
 " }}}
-
 " Markdown {{{
 "markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown

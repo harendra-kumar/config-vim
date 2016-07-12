@@ -1,3 +1,6 @@
+Plug 'altercation/vim-colors-solarized'
+Plug 'jeetsukumaran/vim-indentwise'
+
 "Plug 'vim-scripts/Conque-Shell' "does not include python files
 Plug 'oplatek/Conque-Shell'
 
