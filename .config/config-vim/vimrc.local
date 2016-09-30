@@ -3,16 +3,20 @@
 "let maplocalleader = '\'
 
 " vim personalized quick reference file
-nmap ,vh :vnew ~/.config/config-vim/vim.md<CR>
+nmap <Leader>vh :vnew ~/.config/config-vim/cheatsheet.txt<CR>
+
+" default to mouse mode off, it is more convenient to copy paste using mouse
+" when mouse mode is off.
+:set mouse=
 
 set textwidth=79
 "set tabstop=4
 "set shiftwidth=4
-"
+
 set splitright
 let NERDTreeQuitOnOpen = 0
 
-"vimdiff unfold everything in both windows
+"vimdiff: unfold everything in both windows
 nmap \zR zR:wincmd W<CR>zR:wincmd W<CR>
 " }}}
 " Appearance {{{
@@ -23,13 +27,24 @@ setlocal colorcolumn=80
 " makes it easy to preview a tag in tagbar
 set cursorline
 
-colorscheme solarized
-set background=light
-call togglebg#map("<F2>")
+if &diff
+  " When using vimdiff use default wombat scheme instead of solarized
+  " Solarized does not highlight diffs well, sometimes diffs get masked
+else
+  " Uncomment 'altercation/vim-colors-solarized' in plugins.vim
+  try
+    colorscheme solarized
+    set background=light
+    call togglebg#map("<F2>")
+  catch
+  endtry
+endif
 
 " Indent Guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
 "let indent_guides_guide_size = 1
+" reset indent guides e.g. after changing shiftwidth
+nmap <Leader>ir :IndentGuidesToggle<CR>:IndentGuidesToggle<CR>
 "let g:indent_guides_auto_colors = 0
 
 " See color values at https://github.com/altercation/vim-colors-solarized
@@ -108,6 +123,9 @@ autocmd FileType haskell set formatoptions-=l
 autocmd FileType haskell set ts=4
 autocmd FileType haskell set sw=4
 
+" Use globally instead of the default local setting
+autocmd FileType haskell let &formatprg="hindent --style johan-tibell -XQuasiQuotes"
+
 " Disable concealplus
 autocmd FileType haskell set conceallevel=0
 
@@ -118,7 +136,7 @@ nnoremap ,ghl :call conque_term#get_instance().writeln(':load '.expand('%'))<CR>
 
 "For neco-ghc to work with YCM
 " This makes vim hang for a while when a . is inserted. Disabling for now.
-"let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " }}}
 " Python {{{

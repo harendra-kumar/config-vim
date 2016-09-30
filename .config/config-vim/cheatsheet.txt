@@ -1,0 +1,113 @@
+Using this cheatsheet {{{~
+==========================
+,vh  | Show this cheat sheet in vim
+TIPS | See the `Help Tips` section at the end of this file
+}}}
+|help| on vim {{{
+===============
+|online-help|       | |:viusage| |:helpgrep|
+|notation|          | |key-notation|
+|set-option|        | |:set|
+|key-mapping|       | |map-commands| |map-listing|
+|map-commands|      | |:map|
+ALL COMMANDS      | :TAB :help+TAB
+}}}
+help on contents {{{~
+====================
+|option-summary|    | 'keywordprg'
+|various-commands|  | |K|
+}}}
+|motion| {{{
+==========
+|word-motions|       | |b| |w| |B| |W| |ge| |e| |gE| |E|
+|left-right-motions| | |0| |^| |$| |-| |+|
+|left-right-motions| | |g0| |gm| |g^| |g$| |gk| |gj|
+|object-motions|     | |(| |)| |{| |}| |[[| |]]| |[|] |][|
+|verious-motions|    | |M|
+|indentwise|         | xy where x ∈ [ ] and y ∈ - + =
+|indentwise|         | [% ]%
+}}}
+|scrolling| {{{
+============
+|scroll-down|       | |CTRL-E| |CTRL-D| |CTRL-F|
+|scroll-up|         | |CTRL-Y| |CTRL-U| |CTRL-B|
+|scroll-cursor|     | |zt| |zz| |zb|
+}}}
+|window| {{{
+==========
+|opening-window|     | |:new| |:vnew| |:split| |:vsplit|
+|opening-window|     | |:hide| | :hide buffer | :hide {cmd} | |:close| |:quit|
+|opening-window|     | CTRL-W q(uit) c(lose) o(nly)
+|window-resize|      | CTRL-W + - < > = _ |
+|window-move-cursor| | CTRL-W w W h j k l p(revious) P(review) t(op) b(ottom)
+|window-moving|      | CTRL-W r R(otate) x(change) H J K L
+}}}
+|Visual| {{{
+==========
+HELP              | `:help visual<tab>`
+SELECTION         | `[v | V | CTRL-V]`
+INSERTION         | `I`
+}}}
+Unicode Input {{{~
+=================
+CTRL-V u <codepoint>
+}}}
+|copy-move| {{{
+=============
+Mouse modes       | `:set mouse=`  | | see `:help mouse` for mouse modes if you are having trouble with selection with mouse or copy
+YANK/PASTE        | `:set paste` | copy-move
+CLIPBOARD         | `:1,10y + | :1,10y * | "+y | "*y | "+p | "*p`
+}}}
+Delete or Change {{{~
+====================
+Formatting (gq)
+}}}
+Others {{{~
+==========
+FILES/BUFFERS       | `:files | :buffers | :ls | :bd | :bp | :bn`
+vim-bbye*           | `:Bdelete`
+FORMATTTING         | `:help formatting | :retab`
+RECORDING           | `:q<letter><keystrokes>q | @<letter> | @@`
+CONQUE              | `:<F9>`
+|folding|/|fold-commands|    | za zc zo zm zr zn | folding/fold-commands
+folds unfold all*   | `\zR` | | for vimdiff
+folds move around   | `[z ]z zj zk` | folding/fold-commands
+quickfix            | :clist | :cn | :cp | :cfirst | :clast | :cc[!] [nr]
+vimgrep             | :vimgrep
+make                | :make
+}}}
+Vim Now Shortcuts {{{~
+=====================
+DISPLAY           | `,r(edraw) | ,<CR>`
+Mouse             | `,ma(ctive) | ,mo(ff)`
+FILES             | `,e(dit) | ,<space>`
+BUFFERS           | `,b<space> | ,bp(revious) | ,bn(ext) | ,bd(elete*)`
+UNDO              | `,u(ndo)`
+SEARCH            | `*(forward) | # (backward)`
+WINMOV            | `<c-h> | <c-j> | <c-k> | <c-l>`
+WINSPLITS         | `,sh | ,sj | ,sk | ,sl`
+SPELL             | `,ss, ]s, [s, z=`
+NERDTREE          | `,f | ,F`
+ALIGN             | `,a= | ,a, | ,a| | ,ap(rompt)`
+TAGBAR            | `,tt`
+CSCOPE            | `<C-\>`
+GIT               | `,gs(tatus) | ,gg(rep) | ,gl | ,gd(iff) | ,g? | ,gb(lame)`
+}}}
+Personal Shortcuts {{{~
+======================
+GHCI              | `,gh | ,ghl`
+}}}
+Color schemes {{{~
+=================
+List colorschemes | :colorscheme <tab>
+}}}
+Help tips {{{~
+=============
+* Use CTRL-] to get help on any highlighted keywords in this file
+* Use CTRL-t to pop back to original place
+* Use ':syn off' to see the real syntax of this file
+* Use |gg| on any help page to go to the beginning of page, related areas
+* Use TAB for completion and to see more possibilities
+}}}
+
+vim:foldlevel=0:foldmarker={{{,}}}:foldmethod=marker:tw=78:ts=8:ft=help:buftype=help:iskeyword=!-~,^*,^|,^",192-255:norl:
