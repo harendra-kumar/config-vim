@@ -105,8 +105,7 @@ then
   # Install haskell-vim-now
   export HVN_REPO
   test -z "$CONFIG_VIM_HASKELL" && export HVN_INSTALL_BASIC=y
-  # bash <(wget -q -O- $HVN_INSTALL_URL) || exit 1
-  bash $HVN_INSTALL_URL || exit 1
+  bash <(wget -q -O- $HVN_INSTALL_URL) || exit 1
 
   install_vim_local
   install_powerline
