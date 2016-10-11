@@ -1,9 +1,7 @@
 #!/bin/bash
 
-#HVN_INSTALL_URL=https://raw.githubusercontent.com/harendra-kumar/haskell-vim-now/master/install.sh
-#HVN_REPO=https://www.github.com/harendra-kumar/haskell-vim-now
-HVN_INSTALL_URL=/vol/hosts/cueball/workspace/github/haskell-vim-now/install.sh
-HVN_REPO=/vol/hosts/cueball/workspace/github/haskell-vim-now
+HVN_INSTALL_URL=https://raw.githubusercontent.com/harendra-kumar/haskell-vim-now/master/install.sh
+HVN_REPO=https://www.github.com/harendra-kumar/haskell-vim-now
 POWERLINE_FONT_REPO=https://github.com/powerline/fonts.git
 
 HVN_DIR=~/.config/haskell-vim-now

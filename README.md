@@ -25,6 +25,7 @@ USE AT YOUR OWN RISK:
 # See troubleshooting section below if you face trouble
 # My patched version of vcsh is needed
 wget -qO- https://raw.githubusercontent.com/harendra-kumar/vcsh/harendra/vcsh > vcsh
+chmod +x vcsh; export PATH=`pwd`:$PATH
 ./vcsh clone https://github.com/harendra-kumar/config-init
 ./vcsh clone https://github.com/harendra-kumar/config-vim
 ```
@@ -49,8 +50,8 @@ If installation is interrupted after successful cloning, use
 the problem.  You can use the same command to reinstall or update the
 config later.
 
-To start from scratch you can also use, `rm -rf ~/.config/haskell-vim-now`
-before invoking vim-setup.sh.
+In case of any unforseen issues, uninstall and install again. See the uninstall
+section.
 
 ## Pre-requisites (For Optional Components)
 
@@ -83,9 +84,14 @@ you would like to push your changes to the config.
 ## Uninstall
 
 ```
-vcsh delete config-vim
-vcsh delete config-init
 rm -rf ~/.config/haskell-vim-now
+vcsh delete config-vim
+```
+
+In case of any issues with vcsh-delete, you can simply remove the directories:
+```
+rm -rf ~/.config/config-vim
+rm -rf ~/.config/vcsh/repo.d/config-vim.git/
 ```
 
 Manually restore any backups of your old files (.orig) created by install.
