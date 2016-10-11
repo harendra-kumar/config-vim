@@ -39,13 +39,17 @@ function run_verbose_errexit() {
   fi
 }
 
+install_plugins() {
+  vim -E -u ~/.vimrc +PlugUpgrade +PlugUpdate +PlugClean! +qall
+}
+
 install_vim_local() {
   # Setup custom symlinks
   run_verbose_errexit ln -snfF $HCONFIG/vimrc.local $HVN_DIR/vimrc.local
   run_verbose_errexit ln -snfF $HCONFIG/plugins.vim $HVN_DIR/plugins.vim
 
   # Now install any extra local plugins
-  vim -E -u ~/.vimrc +PlugUpgrade +PlugUpdate +PlugClean! +qall
+  install_plugins
 }
 
 install_powerline() {
@@ -56,11 +60,25 @@ install_powerline() {
   rm -rf ${font_dir}
 }
 
+enable_ycm_plugin() {
+    local inplace
+    if [ `uname` = "Darwin" ]
+    then
+      inplace="-i orig"
+    else
+      inplace="--in-place"
+    fi
+    echo "Adding YCM to local plugins..."
+    sed $inplace -e '/^".*Valloric\/YouCompleteMe.*/ s/^"//' $HCONFIG/plugins.vim
+}
+
 # XXX changes the current dir
 install_ycm() {
     # TODO - install dependencies first
     # Compile YouCompleteMe
-    run_verbose_errexit cd ~/.vim/bundle/YouCompleteMe
+    enable_ycm_plugin
+    install_plugins
+    cd ~/.vim/bundle/YouCompleteMe || exit 1
     run_verbose_errexit git submodule update --init --recursive
     run_verbose_errexit ./install.py --clang-completer
 }

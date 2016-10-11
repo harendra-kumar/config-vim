@@ -19,6 +19,13 @@ let NERDTreeQuitOnOpen = 0
 "vimdiff: unfold everything in both windows
 nmap \zR zR:wincmd W<CR>zR:wincmd W<CR>
 " }}}
+" Plugins {{{
+augroup load_on_insert
+  autocmd!
+  autocmd InsertEnter * call plug#load('YouCompleteMe')
+                     \| autocmd! load_on_insert
+augroup END
+" }}}
 " Appearance {{{
 " Set color column before the color scheme for the scheme color to take effect.
 hi ColorColumn ctermbg=8

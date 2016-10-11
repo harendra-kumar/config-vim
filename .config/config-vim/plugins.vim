@@ -3,7 +3,8 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'oplatek/Conque-Shell'
 
 " General Completions {{{
-Plug 'Valloric/YouCompleteMe' " slows startup - can we load on edit?
+" Slows startup, so we load it on insert
+"Plug 'Valloric/YouCompleteMe', { 'on': [] }
 Plug 'Raimondi/delimitMate'
 " }}}
 
