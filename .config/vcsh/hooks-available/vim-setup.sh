@@ -110,6 +110,7 @@ then
   install_vim_local
   install_powerline
   test -n "$CONFIG_VIM_YCM" && install_ycm
+  true
 else
   echo "$HVN_DIR exists. You can use \"$0 -f\" to force setup again."
 fi
