@@ -12,11 +12,6 @@ TIPS | See the `Help Tips` section at the end of this file
 |map-commands|      | |:map|
 ALL COMMANDS      | :TAB :help+TAB
 }}}
-help on contents {{{~
-====================
-|option-summary|    | 'keywordprg'
-|various-commands|  | |K|
-}}}
 |motion| {{{
 ==========
 |word-motions|       | |b| |w| |B| |W| |ge| |e| |gE| |E|
@@ -27,71 +22,78 @@ help on contents {{{~
 |indentwise|         | xy where x ∈ [ ] and y ∈ - + =
 |indentwise|         | [% ]%
 }}}
+|folding| {{{
+===========
+|fold-commands|       | |za| |zc| |zo| |zm| |zr| |zn|  |[z| |]z| |zj| |zk|
+unfold all windows* | \zR
+}}}
 |scrolling| {{{
 ============
 |scroll-down|       | |CTRL-E| |CTRL-D| |CTRL-F|
 |scroll-up|         | |CTRL-Y| |CTRL-U| |CTRL-B|
 |scroll-cursor|     | |zt| |zz| |zb|
 }}}
-|window| {{{
-==========
+|windows| |buffers| {{{
+===================
 |opening-window|     | |:new| |:vnew| |:split| |:vsplit|
 |opening-window|     | |:hide| | :hide buffer | :hide {cmd} | |:close| |:quit|
 |opening-window|     | CTRL-W q(uit) c(lose) o(nly)
 |window-resize|      | CTRL-W + - < > = _ |
 |window-move-cursor| | CTRL-W w W h j k l p(revious) P(review) t(op) b(ottom)
 |window-moving|      | CTRL-W r R(otate) x(change) H J K L
+
+|buffer-list|        |
+|buffer-hidden|      | |:files| |:buffers| |:ls| |:bd| |:bp| |:bn|
+vim-bbye           | :Bdelete
+}}}
+Edit {{{~
+========
+|option-summary| | 'mouse' 'pt' 'paste'
+|copy-move|
+  CLIPBOARD    | :1,10y+ :1,10y* "+y "*y "+p "*p
+|formatting|     | :[range]ce[nter] [width] |ce| |le| |ri|
+|formatting|     | |gq| |gqq| |gw| |gww|
+|change-tabs|    | |:retab|
 }}}
 |Visual| {{{
 ==========
-HELP              | `:help visual<tab>`
-SELECTION         | `[v | V | CTRL-V]`
-INSERTION         | `I`
+|visual-use|
+|visual-start|        | |v| |V| |CTRL-V|
+|visual-operators|    | ~ d c y > < ! = gq
+                    | r s C S R  x D X  Y p J  u U  I A
+}}}
+context specific help {{{~
+=========================
+|option-summary|    | 'keywordprg'
+|various-commands|  | |K|
 }}}
 Unicode Input {{{~
 =================
 CTRL-V u <codepoint>
 }}}
-|copy-move| {{{
-=============
-Mouse modes       | `:set mouse=`  | | see `:help mouse` for mouse modes if you are having trouble with selection with mouse or copy
-YANK/PASTE        | `:set paste` | copy-move
-CLIPBOARD         | `:1,10y + | :1,10y * | "+y | "*y | "+p | "*p`
-}}}
-Delete or Change {{{~
-====================
-Formatting (gq)
-}}}
 Others {{{~
 ==========
-FILES/BUFFERS       | `:files | :buffers | :ls | :bd | :bp | :bn`
-vim-bbye*           | `:Bdelete`
-FORMATTTING         | `:help formatting | :retab`
-RECORDING           | `:q<letter><keystrokes>q | @<letter> | @@`
-CONQUE              | `:<F9>`
-|folding|/|fold-commands|    | za zc zo zm zr zn | folding/fold-commands
-folds unfold all*   | `\zR` | | for vimdiff
-folds move around   | `[z ]z zj zk` | folding/fold-commands
-quickfix            | :clist | :cn | :cp | :cfirst | :clast | :cc[!] [nr]
-vimgrep             | :vimgrep
-make                | :make
+|complex-repeat| | q{0-9a-zA-Z"}<keystrokes>q | @{0-9a-z".=*+} | @@
+|ConqueTerm|     | `:<F9>`
+|quickfix|       | |:clist| |:cn| |:cp| |:cfirst| |:clast| |:cc|[!] [nr]
+|quickfix|       | |:vimgrep| |:make|
 }}}
 Vim Now Shortcuts {{{~
 =====================
-DISPLAY           | `,r(edraw) | ,<CR>`
-Mouse             | `,ma(ctive) | ,mo(ff)`
-FILES             | `,e(dit) | ,<space>`
-BUFFERS           | `,b<space> | ,bp(revious) | ,bn(ext) | ,bd(elete*)`
-UNDO              | `,u(ndo)`
-SEARCH            | `*(forward) | # (backward)`
-WINMOV            | `<c-h> | <c-j> | <c-k> | <c-l>`
-WINSPLITS         | `,sh | ,sj | ,sk | ,sl`
-SPELL             | `,ss, ]s, [s, z=`
-NERDTREE          | `,f | ,F`
-ALIGN             | `,a= | ,a, | ,a| | ,ap(rompt)`
-TAGBAR            | `,tt`
-CSCOPE            | `<C-\>`
-GIT               | `,gs(tatus) | ,gg(rep) | ,gl | ,gd(iff) | ,g? | ,gb(lame)`
+DISPLAY           | ,r(edraw) ,<CR>
+Mouse             | ,ma(ctive) ,mo(ff)
+FILES             | ,e(dit) ,<space>
+BUFFERS           | ,b<space> ,bp(revious) ,bn(ext) ,bd(elete*)
+UNDO              | ,u(ndo)
+SEARCH            | *(forward) #(backward)
+WINMOV            | <c-h> <c-j> <c-k> <c-l>
+WINSPLITS         | ,sh ,sj ,sk ,sl
+SPELL             | ,ss, ]s, [s, z=
+NERDTREE          | ,f ,F
+ALIGN             | ,a= ,a, ,a| ,ap(rompt)
+TAGBAR            | ,tt
+CSCOPE            | <C-\>
+GIT               | ,gs(tatus) ,gg(rep) ,gl ,gd(iff) ,g? ,gb(lame)
 }}}
 Personal Shortcuts {{{~
 ======================
