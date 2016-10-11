@@ -7,7 +7,7 @@ nmap <Leader>vh :vnew ~/.config/config-vim/cheatsheet.txt<CR>
 
 " default to mouse mode off, it is more convenient to copy paste using mouse
 " when mouse mode is off.
-:set mouse=
+set mouse=
 
 set textwidth=79
 "set tabstop=4
