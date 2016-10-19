@@ -33,9 +33,10 @@ chmod +x vcsh; export PATH=`pwd`:$PATH
 ### Vim Cheat Sheet
 
 After installing, type `,vh` (stands for vim help) in vim command mode to
-display a cheatsheet in a separate window as well as in the browser. This is my
-personal list of reference commands organized by vim help sections, you can
-edit the file opened by this command and put your own favorite commands in it.
+display [a cheatsheet](https://github.com/harendra-kumar/config-vim/blob/master/.config/config-vim/cheatsheet.txt)
+in a separate window as well as in the browser. This is my personal list
+of reference commands organized by vim help sections, you can edit the
+file opened by this command and put your own favorite commands in it.
 
 ### Customizations
 
